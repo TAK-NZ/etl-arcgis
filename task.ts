@@ -433,14 +433,15 @@ export default class Task extends ETL {
                 };
 
                 if (feature.geometry.type.startsWith('Multi')) {
-                    feature.geometry.coordinates.forEach((coords: any, idx: number) => {
+                    const singleType = feature.geometry.type.replace('Multi', '') as 'Point' | 'LineString' | 'Polygon';
+                    feature.geometry.coordinates.forEach((coords: number[] | number[][] | number[][][], idx: number) => {
                         fc.features.push({
                             id: feature.id + '-' + idx,
                             type: 'Feature',
                             properties: feature.properties,
                             geometry: {
-                                type: feature.geometry.type.replace('Multi', ''),
-                                coordinates: coords
+                                type: singleType,
+                                coordinates: coords as number[] & number[][] & number[][][]
                             }
                         });
                     });
