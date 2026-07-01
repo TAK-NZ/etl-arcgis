@@ -10,6 +10,26 @@
 
 ## Version History
 
+### v7.26.0
+
+- :arrow_up: Update ESRI-Dump to v6
+
+### v7.25.0
+
+- :arrow_up: Update ESRI-Dump
+
+### v7.24.0
+
+- :arrow_up: Update Core Dependencies
+
+### v7.23.0
+
+- :arrow_up: Update Core Dependencies
+
+### v7.22.0
+
+- :arrow_up: Update Core Dependencies
+
 ### v7.21.0
 
 - :arrow_up: Update Core Dependencies
