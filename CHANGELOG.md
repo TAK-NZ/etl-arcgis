@@ -10,6 +10,15 @@
 
 ## Version History
 
+### v7.29.1
+
+- :tada: Add `capabilities.json` manifest (validated against `@tak-ps/etl`'s `StaticCapabilitiesSchema`) describing this task's permissions, compute requirements and invocation modes, embedded in the pushed image as the `com.cloudtak.capabilities` OCI annotation via `docker buildx` in CI
+- :white_check_mark: Add basic test suite (`npm test`) covering the task's static config and Incoming/Outgoing Input/Output schemas
+- :arrow_up: Bump CI Node.js version to 24 in the deploy workflow to match the Lambda base image
+- :arrow_up: Update ESRI-Dump to v6.6, allowing querying layers without extent info
+- :arrow_up: Update `@tak-ps/etl`, eslint and typescript-eslint to latest compatible versions
+- :bug: Fix `package.json` `license` field (`ISC`) to match the repository's actual `LICENSE` file (`AGPL-3.0-only`)
+
 ### v7.26.0
 
 - :arrow_up: Update ESRI-Dump to v6
