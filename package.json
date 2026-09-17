@@ -2,16 +2,16 @@
     "name": "coe-arcgis",
     "type": "module",
     "prviate": true,
-    "version": "7.26.0",
+    "version": "7.29.1",
     "description": "",
     "main": "task.ts",
     "scripts": {
-        "lint": "eslint *.ts",
+        "lint": "eslint *.ts test",
         "build": "tsc --build",
-        "test": "exit 0"
+        "test": "tsx --test test/*.test.ts"
     },
     "author": "Nick Ingalls <nick@ingalls.ca>",
-    "license": "ISC",
+    "license": "AGPL-3.0-only",
     "engines": {
         "node": ">= 24"
     },
@@ -20,6 +20,7 @@
         "@types/aws-lambda": "^8.10.162",
         "@types/terraformer__arcgis": "^2.0.5",
         "eslint": "^10.6.0",
+        "tsx": "^4.23.13",
         "typescript": "^6.0.3",
         "typescript-eslint": "^8.62.1"
     },
