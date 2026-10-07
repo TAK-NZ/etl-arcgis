@@ -18,6 +18,8 @@
 - :arrow_up: Update ESRI-Dump to v6.6, allowing querying layers without extent info
 - :arrow_up: Update `@tak-ps/etl`, eslint and typescript-eslint to latest compatible versions
 - :bug: Fix `package.json` `license` field (`ISC`) to match the repository's actual `LICENSE` file (`AGPL-3.0-only`)
+- :arrow_up: Update GitHub Actions to releases that run on Node.js 24, clearing the Node.js 20 deprecation warnings: `actions/checkout` v7, `actions/setup-node` v7, `aws-actions/configure-aws-credentials` v6 and `docker/setup-buildx-action` v4. `aws-actions/amazon-ecr-login` v2 already runs on Node.js 24. Not yet run in CI on these versions
+- :rocket: Pin the workflow runners to `ubuntu-24.04` instead of `ubuntu-latest`, so the `ubuntu-latest` migration to Ubuntu 26 (starting October 19, 2026) does not change the build environment unannounced
 
 ### v7.26.0
 
