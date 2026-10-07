@@ -18,6 +18,7 @@
 - :arrow_up: Update ESRI-Dump to v6.6, allowing querying layers without extent info
 - :arrow_up: Update `@tak-ps/etl`, eslint and typescript-eslint to latest compatible versions
 - :bug: Fix `package.json` `license` field (`ISC`) to match the repository's actual `LICENSE` file (`AGPL-3.0-only`)
+- :rocket: Add a .dockerignore so .git, .github, node_modules, dist, test, docs, .agents, .env*, and markdown files are kept out of the image build context
 
 ### v7.26.0
 
