@@ -1,16 +1,16 @@
 {
-    "compilerOptions": {
-        "target": "ES2025",
-        "module": "NodeNext",
-        "moduleResolution": "NodeNext",
-        "strict": true,
-        "rootDir": "./",
-        "outDir": "./dist",
-        "types": ["node"],
-        "esModuleInterop": true,
-        "skipLibCheck": true
-    },
-    "include": [
-        "task.ts"
-    ]
+	"compilerOptions": {
+		"target": "ES2025",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"strict": true,
+		"rootDir": "./",
+		"outDir": "./dist",
+		"types": ["node"],
+		"esModuleInterop": true,
+		"skipLibCheck": true
+	},
+	"include": [
+		"task.ts"
+	]
 }
