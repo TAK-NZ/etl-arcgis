@@ -10,7 +10,54 @@
 
 ## Version History
 
+### v7.35.2
+- :arrow_up: Sync with upstream dfpc-coe/etl-arcgis v7.35.1: `@tak-ps/etl` 11.x (CloudTAK v14 requires ETL-Base v11 or higher; Output schemas are published as named schemas), TypeScript 7, OXLint instead of ESLint and the refactored `task.ts`
+- :arrow_up: Use `@tak-ps/etl` `^11.4.0` and update the other dependencies within their existing ranges, which clears the `npm audit --production` findings that the deploy workflow checks
+- :rocket: Keep the Lambda base image and CI on Node 24 (upstream moved to Node 26), matching the other TAK-NZ ETLs, and keep our `etl-deploy.yml` and `lint.yml` workflows instead of upstream's `ecr_etl.yml`, `release.yml` and `test.yml`
+- :rocket: Keep `AGPL-3.0-only` as the `package.json` license, matching the `LICENSE` file
+- :white_check_mark: Keep the `tsx` based test suite
+### v7.36.0
+
+- :arrow_up: Update Core Dependencies
+
+### Pending Release
+
+### v7.35.1 - 2026-11-17
+
+- :arrow_up: Update Core Dependencies
+
+### v7.35.0
+
+- :arrow_up: Migrate to TS7 for blazing build times
+- :arrow_up: Migrate off ESLint onto OXLint for blazing lint times
+- :bug: Fix numerous small bugs in the codebase surfaced by OXLint
+
+### v7.34.0
+
+- :bug: Add URL Escaping to ensure query params are properly encoded
+
+### v7.33.0
+
+- :arrow_up: Update `@tak-ps/etl` to 11.x - Output schemas are published as named schemas, as required by CloudTAK v14
+
+### v7.32.0
+
+- :arrow_up: Update Core Dependencies
+
+### v7.31.0
+
+- :arrow_up: Update Core Dependencies
+
+### v7.30.1
+
+- :arrow_up: Update Core Dependencies
+
+### v7.30.0
+
+- :arrow_up: Update Core Dependencies
+
 ### v7.29.1
+
 
 - :tada: Add `capabilities.json` manifest (validated against `@tak-ps/etl`'s `StaticCapabilitiesSchema`) describing this task's permissions, compute requirements and invocation modes, embedded in the pushed image as the `com.cloudtak.capabilities` OCI annotation via `docker buildx` in CI
 - :white_check_mark: Add basic test suite (`npm test`) covering the task's static config and Incoming/Outgoing Input/Output schemas
@@ -22,9 +69,24 @@
 - :rocket: Pin the workflow runners to `ubuntu-24.04` instead of `ubuntu-latest`, so the `ubuntu-latest` migration to Ubuntu 26 (starting October 19, 2026) does not change the build environment unannounced
 - :rocket: Add a .dockerignore so .git, .github, node_modules, dist, test, docs, .agents, .env*, and markdown files are kept out of the image build context
 
+- :bug: Pass permission validation
+
+### v7.29.0
+
+- :rocket: Allow querying layers without extent info
+
+### v7.28.0
+
+- :rocket: Add Capabilities document
+- :arrow_up: Update GH Actions
+
+### v7.27.0
+
+- :arrow_up: Update Core Dependencies
+
 ### v7.26.0
 
-- :arrow_up: Update ESRI-Dump to v6
+- :arrow_up: Update ESRI-Dump
 
 ### v7.25.0
 

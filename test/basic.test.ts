@@ -10,6 +10,9 @@ process.env.ETL_TOKEN = process.env.ETL_TOKEN || 'etl.test-token';
 
 const { default: Task } = await import('../task.js');
 
+type Props = Record<string, { type?: string, default?: unknown, enum?: unknown[] } | undefined>;
+const propsOf = (schema: unknown): Props => (schema as { properties: Props }).properties;
+
 test('Task static config', () => {
     assert.equal(Task.name, 'etl-arcgis');
     assert.deepEqual(Task.flow, [DataFlowType.Incoming, DataFlowType.Outgoing]);
@@ -20,6 +23,7 @@ test('Incoming Input schema', async () => {
     const schema = await task.schema(SchemaType.Input, DataFlowType.Incoming);
 
     assert.equal(schema.type, 'object');
+    const props = propsOf(schema);
     for (const key of [
         'ARCGIS_URL',
         'ARCGIS_QUERY',
@@ -29,11 +33,11 @@ test('Incoming Input schema', async () => {
         'ARCGIS_USERNAME',
         'ARCGIS_PASSWORD'
     ]) {
-        assert.ok(schema.properties[key], `Env schema missing property: ${key}`);
+        assert.ok(props[key], `Env schema missing property: ${key}`);
     }
 
-    assert.deepEqual(schema.properties.ARCGIS_QUERY_STRATEGY.enum, ['Query', 'QueryTopFeatures']);
-    assert.equal(schema.properties.ARCGIS_QUERY_STRATEGY.default, 'Query');
+    assert.deepEqual(props.ARCGIS_QUERY_STRATEGY?.enum, ['Query', 'QueryTopFeatures']);
+    assert.equal(props.ARCGIS_QUERY_STRATEGY?.default, 'Query');
 });
 
 // Incoming Output schema depends on fetchLayer() reaching a live CloudTAK API
@@ -45,6 +49,7 @@ test('Outgoing Input schema', async () => {
     const schema = await task.schema(SchemaType.Input, DataFlowType.Outgoing);
 
     assert.equal(schema.type, 'object');
+    const props = propsOf(schema);
     for (const key of [
         'ARCGIS_PORTAL',
         'ARCGIS_USERNAME',
@@ -54,11 +59,11 @@ test('Outgoing Input schema', async () => {
         'ARCGIS_POLYS_URL',
         'PRESERVE_HISTORY'
     ]) {
-        assert.ok(schema.properties[key], `Env schema missing property: ${key}`);
+        assert.ok(props[key], `Env schema missing property: ${key}`);
     }
 
-    assert.equal(schema.properties.PRESERVE_HISTORY.type, 'boolean');
-    assert.equal(schema.properties.PRESERVE_HISTORY.default, false);
+    assert.equal(props.PRESERVE_HISTORY?.type, 'boolean');
+    assert.equal(props.PRESERVE_HISTORY?.default, false);
 });
 
 test('Outgoing Output schema', async () => {
@@ -66,5 +71,5 @@ test('Outgoing Output schema', async () => {
     const schema = await task.schema(SchemaType.Output, DataFlowType.Outgoing);
 
     assert.equal(schema.type, 'object');
-    assert.deepEqual(schema.properties, {});
+    assert.deepEqual(propsOf(schema), {});
 });
